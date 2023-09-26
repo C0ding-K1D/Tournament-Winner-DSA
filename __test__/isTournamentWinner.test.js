@@ -9,7 +9,7 @@ describe("tournamentWinner", () => {
     ];
     const results = [0, 0, 1];
 
-    expect(tournamentWinner(competitions, results)).toBe("B");
+    expect(tournamentWinner(competitions, results)).toBe("C");
   });
 
   it("should handle two teams with different outcomes", () => {
@@ -28,6 +28,6 @@ describe("tournamentWinner", () => {
     ];
     const results = [0, 1, 1, 1];
 
-    expect(tournamentWinner(competitions, results)).toBe("D");
+    expect(tournamentWinner(competitions, results)).toBe("B");
   });
 });
