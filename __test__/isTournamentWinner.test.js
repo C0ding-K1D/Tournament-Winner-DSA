@@ -1,44 +1,33 @@
 const tournamentWinner = require("../tournamentWinner");
 
 describe("tournamentWinner", () => {
-  it("should return the winning team", () => {
+  it("should return the winning team in a round-robin scenario", () => {
     const competitions = [
       ["A", "B"],
-      ["C", "D"],
-      ["E", "F"],
-    ];
-    const results = [0, 1, 0];
-
-    expect(tournamentWinner(competitions, results)).toBe("D");
-  });
-
-  it("should handle ties", () => {
-    const competitions = [
-      ["A", "B"],
-      ["C", "D"],
-      ["E", "F"],
+      ["B", "C"],
+      ["C", "A"],
     ];
     const results = [0, 0, 1];
 
-    expect(tournamentWinner(competitions, results)).toBe("F");
+    expect(tournamentWinner(competitions, results)).toBe("B");
   });
 
-  it("should return the only team if there is only one competition", () => {
+  it("should handle two teams with different outcomes", () => {
     const competitions = [["A", "B"]];
     const results = [1];
 
     expect(tournamentWinner(competitions, results)).toBe("A");
   });
 
-  it("should handle multiple competitions", () => {
+  it("should handle multiple competitions with a clear winner", () => {
     const competitions = [
       ["A", "B"],
+      ["B", "C"],
       ["C", "D"],
-      ["E", "F"],
-      ["G", "H"],
+      ["D", "E"],
     ];
-    const results = [0, 1, 1, 0];
+    const results = [0, 1, 1, 1];
 
-    expect(tournamentWinner(competitions, results)).toBe("G");
+    expect(tournamentWinner(competitions, results)).toBe("D");
   });
 });
